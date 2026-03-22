@@ -1,0 +1,245 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.title {
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.dedication {
+    font-family: "Playpen Sans", cursive;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.night-sky {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #3b507d 0%, #7d65a1 40%, #b86e96 70%, #d18d66 100%);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.button-wrapper {
+    position: absolute;
+    z-index: 100;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.gif-container {
+    position: absolute;
+    top: 10%; 
+    left: 50%;
+    width: 130px;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -20px);
+    transition: opacity 2s ease 2s, transform 2s ease 2s;
+}
+
+.gif-container.fade-in {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.circle-button {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #facc15;
+    border: 4px solid #fef08a;
+    color: #854d0e;
+    font-family: 'Caveat', cursive;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.circle-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.button-wrapper.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.text-container {
+    text-align: center;
+    color: white;
+    z-index: 10;
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+    transition: opacity 2s ease 2s, transform 2s ease 2s;
+    max-width: 100%;
+    left:50%;
+    bottom:40px;
+    position: absolute;
+}
+
+.text-container.fade-in {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.bouquet-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+    pointer-events: none;
+    transition: transform 2.5s ease-out, opacity 2.5s ease-out;
+}
+
+.bouquet-wrapper.emerge {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    animation: swayBouquet 5s ease-in-out infinite 2.5s; 
+}
+
+.flower-wrap {
+    position: absolute;
+    bottom: 0;
+    transform-origin: bottom center;
+}
+
+.stem {
+    width: 6px;
+    background-color: #15803d;
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.leaf {
+    position: absolute;
+    width: 20px;
+    height: 40px;
+    background-color: #16a34a;
+    border-radius: 0 100px 0 100px;
+}
+
+.leaf-1 {
+}
+
+.leaf-2 {
+    transform: scaleX(-1);
+}
+
+.tulip-head {
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38px;
+    height: 45px;
+    border-radius: 5px 5px 15px 15px;
+    position: relative;
+}
+
+.petals {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.pétalo-central, .petals::before, .petals::after {
+    content: '';
+    position: absolute;
+    background-color: #facc15;
+    border: 1px solid #eab308;
+    border-radius: 20px 20px 5px 5px;
+}
+
+.pétalo-central {
+    width: 25px;
+    height: 43px;
+    left: 7px;
+    top: 0;
+    z-index: 2;
+    background: linear-gradient(180deg, #facc15 0%, #eab308 100%);
+}
+
+.petals::before {
+    width: 25px;
+    height: 38px;
+    left: 1px;
+    top: 3px;
+    transform: rotate(-12deg);
+    z-index: 1;
+    background-color: #fbbf24;
+}
+
+.petals::after {
+    width: 25px;
+    height: 38px;
+    right: 1px;
+    top: 3px;
+    transform: rotate(12deg);
+    z-index: 1;
+    background-color: #fbbf24;
+}
+
+.tulip-head::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 15px;
+    height: 10px;
+    background-color: #eab308;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+@keyframes swayBouquet {
+    0%, 100% {
+        transform: translate(-50%, -50%) rotate(-2deg);
+    }
+    50% {
+        transform: translate(-50%, -50%) rotate(2deg);
+    }
+}
+/*TE AMO ANDREA*/
